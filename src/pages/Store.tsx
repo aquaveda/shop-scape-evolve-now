@@ -5,8 +5,14 @@ import { ProductFilters } from '@/components/ProductFilters';
 import { ProductCard } from '@/components/ProductCard';
 import { ShoppingCart } from '@/components/ShoppingCart';
 import { CheckoutPage } from '@/components/CheckoutPage';
-import { ViewMode, SortOption } from '@/types/product';
+import { ComparisonTool } from '@/components/ComparisonTool';
+import { QuickViewModal } from '@/components/QuickViewModal';
+import { FloatingActionButton } from '@/components/FloatingActionButton';
+import { ViewMode, SortOption, Product } from '@/types/product';
 import { products, getProductsByCategory, searchProducts } from '@/data/products';
+import { useCart } from '@/contexts/CartContext';
+import { Button } from '@/components/ui/button';
+import { GitCompare, Eye } from 'lucide-react';
 
 type PageView = 'store' | 'checkout' | 'success';
 
@@ -17,6 +23,9 @@ export const Store: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isComparisonOpen, setIsComparisonOpen] = useState(false);
+  const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
+  const { addItem } = useCart();
 
   const filteredProducts = useMemo(() => {
     let result = searchQuery 

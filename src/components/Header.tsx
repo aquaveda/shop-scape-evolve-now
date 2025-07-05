@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Search, ShoppingCart, Menu, Heart, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -28,9 +29,14 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, onCartClick }) => {
             <Button variant="ghost" size="icon" className="md:hidden">
               <Menu className="h-5 w-5" />
             </Button>
-            <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              ShopHub
-            </h1>
+            <div className="flex items-center gap-3 px-4 py-2 bg-gradient-primary rounded-lg shadow-elegant">
+              <div className="bg-white/20 p-2 rounded-md">
+                <ShoppingCart className="h-6 w-6 text-white" />
+              </div>
+              <h1 className="text-2xl font-bold text-white">
+                ShopHub
+              </h1>
+            </div>
           </div>
 
           {/* Search Bar */}
@@ -60,9 +66,11 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, onCartClick }) => {
             </Button>
 
             {/* User Account */}
-            <Button variant="ghost" size="icon">
-              <User className="h-5 w-5" />
-            </Button>
+            <Link to="/profile">
+              <Button variant="ghost" size="icon">
+                <User className="h-5 w-5" />
+              </Button>
+            </Link>
 
             {/* Shopping Cart */}
             <Button 

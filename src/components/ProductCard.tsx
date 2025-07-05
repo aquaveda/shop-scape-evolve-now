@@ -90,8 +90,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, viewMode }) =
   }
 
   return (
-    <Card className="group hover:shadow-product transition-all duration-300 animate-fade-in bg-gradient-card overflow-hidden">
-      <CardContent className="p-0">
+    <Card className="group hover:shadow-product transition-all duration-300 animate-fade-in bg-gradient-card overflow-hidden h-full flex flex-col">
+      <CardContent className="p-0 flex flex-col h-full">
         <div className="relative overflow-hidden">
           <img
             src={product.image}
@@ -119,7 +119,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, viewMode }) =
           </Button>
         </div>
         
-        <div className="p-4">
+        <div className="p-4 flex flex-col flex-grow">
           <div className="flex items-center gap-2 mb-2">
             <div className="flex items-center">
               <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
@@ -133,7 +133,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, viewMode }) =
             </Badge>
           </div>
           
-          <h3 className="font-semibold text-lg mb-2 text-foreground line-clamp-2">
+          <h3 className="font-semibold text-lg mb-2 text-foreground line-clamp-2 flex-grow">
             {product.name}
           </h3>
           
@@ -141,7 +141,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, viewMode }) =
             {product.description}
           </p>
           
-          <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center justify-between mb-4 mt-auto">
             <div className="flex items-center gap-2">
               <span className="text-xl font-bold text-primary">${product.price}</span>
               {product.originalPrice && (
@@ -154,6 +154,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, viewMode }) =
           
           <Button
             variant="cart"
+            size="lg"
             className="w-full hover:animate-cart-bounce"
             onClick={handleAddToCart}
           >
